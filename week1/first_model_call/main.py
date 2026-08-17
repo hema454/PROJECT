@@ -1,19 +1,22 @@
 import json
 import httpx
+import logging
 
 from config import settings
 
 
 URL = f"{settings.openrouter_base_url}/chat/completions"
 
+ 
+
 
 def call_model(prompt: str) -> dict:
-    """Send a raw HTTP POST request to OpenRouter."""
 
     headers = {
         "Authorization": f"Bearer {settings.openrouter_api_key}",
         "Content-Type": "application/json",
     }
+
 
     body = {
         "model": settings.model,
