@@ -1,4 +1,5 @@
 import time
+import os
 import json
 import logging
 import httpx
@@ -13,13 +14,36 @@ class OpenRouterClient:
 USD_TO_INR = settings.usd_to_inr
 
 # ---- structured logger: emits raw JSON lines, no timestamp/level prefix ----
+# =========================================================
+# Structured Logger
+# =========================================================
+
 logger = logging.getLogger("openrouter_cost")
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-handler.setFormatter(logging.Formatter("%(message)s"))
-logger.addHandler(handler)
-logger.propagate = False
 
+# Create logs folder
+os.makedirs("logs", exist_ok=True)
+
+# Log file
+log_file = os.path.join("logs", "openrouter.log")
+
+# File handler
+file_handler = logging.FileHandler(
+    log_file,
+    mode="a",
+    encoding="utf-8"
+)
+
+# Write only the message
+file_handler.setFormatter(
+    logging.Formatter("%(message)s")
+)
+
+# Avoid duplicate handlers
+if not logger.handlers:
+    logger.addHandler(file_handler)
+
+logger.propagate = False
 
 def count_tokens_estimate(text: str, encoding_name: str = "cl100k_base") -> int:
 

@@ -1,0 +1,2 @@
+{"event": "openrouter_call", "model": "openai/gpt-4o-mini", "generation_id": "gen-1786963236-gFTdvzGnMrXdqSfQMUMB", "prompt_tokens_estimate_local": 16, "prompt_tokens_provider": 22, "completion_tokens_provider": 88, "latency_ms": 2012.217, "cost_usd": 5.61e-05, "cost_inr": 0.004937, "usd_to_inr_rate_used": 88.0}
+{"event": "openrouter_cost_mismatch", "generation_id": "gen-1786963236-gFTdvzGnMrXdqSfQMUMB", "mismatch": {"prompt_tokens": {"reported": 22, "dashboard": 20}, "completion_tokens": {"reported": 88, "dashboard": 125}}}
