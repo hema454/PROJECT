@@ -1,15 +1,3 @@
-"""
-Minimal tool-calling agent loop. No framework (no LangChain, no SDK abstraction
-layer) — raw httpx calls to the Anthropic Messages API, same pattern as the
-raw-httpx-to-OpenRouter approach from Week 1.
-
-Run:
-    export ANTHROPIC_API_KEY=sk-...
-    python agent_loop.py            # live run against the real API
-    python agent_loop.py --demo     # deterministic offline demo (no API key needed)
-                                     # proves normal termination AND cap-hit termination
-"""
-
 import os
 import sys
 import json
