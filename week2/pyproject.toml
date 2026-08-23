@@ -1,0 +1,19 @@
+[project]
+name = "week2"
+version = "0.1.0"
+description = "week2"
+readme = "README.md"
+authors = [
+    { name = "Hemavarshini", email = "hemavarshini343@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "json-repair>=0.63.3",
+    "pydantic[email]>=2.13.4",
+    "pydantic-settings>=2.15.0",
+    "validator>=0.7.1",
+]
+
+[tool.uv]
+package = false
