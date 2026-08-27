@@ -15,9 +15,9 @@ long-term infrastructure investment was necessary and overdue.
 ```
 **Changed:** N/A (starting point)
 **Expected:** N/A
-**Actual:** - The city council approved a $4.5 million budget for downtown road repairs, set to start in April and last six months.  
-- Repairs will impact Main Street, Oak Avenue, and Third Street, with planned detours during peak construction.  
-- Local business owners are worried about decreased foot traffic during repairs, while the mayor's office emphasizes the project's importance for long-term infrastructure.
+**Actual:** - The city council has approved a $4.5 million budget for downtown road repairs set to begin in April and last for six months, affecting Main Street, Oak Avenue, and Third Street.
+- Detours will be implemented during peak construction times to manage traffic.
+- Local business owners are worried about decreased foot traffic, while city officials emphasize the repairs as a necessary investment in long-term infrastructure.
 
 ## Version 2
 **Prompt:**
@@ -34,9 +34,9 @@ long-term infrastructure investment was necessary and overdue.
 ```
 **Changed:** Added a negative instruction: "Do not include your own opinion."
 **Expected:** AI stops adding opinions entirely.
-**Actual:** - The city council approved a $4.5 million budget for downtown road repairs, set to begin in April and last six months.
-- The repairs will impact Main Street, Oak Avenue, and Third Street, with planned detours during peak construction times.
-- Local business owners are worried about reduced foot traffic during the repairs, while the mayor's office emphasizes the importance of the long-term infrastructure investment.
+**Actual:** - The city council approved a $4.5 million budget for downtown road repairs, set to begin in April and lasting six months.  
+- The affected streets include Main Street, Oak Avenue, and Third Street, with planned detours during peak construction.  
+- Local business owners are worried about decreased foot traffic during the repairs, while the mayor's office emphasizes the necessity of the long-term infrastructure investment.
 
 ## Version 3
 **Prompt:**
@@ -55,7 +55,7 @@ long-term infrastructure investment was necessary and overdue.
 **Expected:** AI produces purely factual bullets, no opinion, no hedging phrases.
 **Actual:** - The city council approved a $4.5M budget for downtown road repairs on Wednesday.  
 - The project will begin in April and is expected to take six months.  
-- The repairs will affect Main Street, Oak Avenue, and Third Street, with detours planned during peak construction.
+- Repairs will affect Main Street, Oak Avenue, and Third Street, with detours planned during peak construction.
 
 ## Version 4
 **Prompt:**
@@ -75,9 +75,9 @@ long-term infrastructure investment was necessary and overdue.
 ```
 **Changed:** Wrapped the article text in <article> tags to clearly separate instructions from content.
 **Expected:** AI stays more focused on facts within the article, less drift, especially on longer articles.
-**Actual:** - The city council approved a $4.5M budget for downtown road repairs.  
-- The project is set to begin in April and will take six months to complete.  
-- The repairs will impact Main Street, Oak Avenue, and Third Street, with planned detours during construction.
+**Actual:** - The city council approved a $4.5 million budget for downtown road repairs on Wednesday.  
+- The project will begin in April and is expected to take six months.  
+- Repairs will affect Main Street, Oak Avenue, and Third Street, with detours planned during peak construction.
 
 ## Version 5
 **Prompt:**

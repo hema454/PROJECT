@@ -1,46 +1,56 @@
-
 import csv
 import time
 
 import httpx
 
+from config import settings
 from prompts import PROMPTS
-
-URL = "http://localhost:11434/api/chat"
-MODEL = "llama3.1:8b"  # change to whatever you pulled with `ollama pull`
 
 
 def call_ollama(prompt: str) -> tuple[dict, float]:
     body = {
-        "model": MODEL,
+        "model": settings.ollama_model,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
     }
-    start = time.perf_counter()
-    with httpx.Client(timeout=120.0) as client:  
-        response = client.post(URL, json=body)
-        response.raise_for_status()
-        data = response.json()
-    elapsed = time.perf_counter() - start
-    return data, elapsed
+
+    last_exc = None
+    for attempt in range(1, settings.max_retries + 1):
+        start = time.perf_counter()
+        try:
+            with httpx.Client(timeout=settings.request_timeout_s) as client:
+                response = client.post(f"{settings.ollama_base_url}/api/chat", json=body)
+                response.raise_for_status()
+                data = response.json()
+            elapsed = time.perf_counter() - start
+            return data, elapsed
+        except httpx.RequestError as exc:
+            last_exc = exc
+            print(f"    attempt {attempt}/{settings.max_retries} failed: {type(exc).__name__} — retrying..."
+                  if attempt < settings.max_retries else
+                  f"    attempt {attempt}/{settings.max_retries} failed: {type(exc).__name__} — giving up.")
+            if attempt < settings.max_retries:
+                time.sleep(2 ** (attempt - 1))  # exponential backoff: 1s, 2s, 4s...
+
+    raise last_exc
 
 
 def run_local_bakeoff():
     rows = []
 
     for item in PROMPTS:
-        print(f"\n{MODEL} (local) | {item['label']}...")
+        print(f"\n{settings.ollama_model} (local) | {item['label']}...")
         try:
             data, elapsed = call_ollama(item["prompt"])
             answer = data["message"]["content"]
-            
+
             eval_duration_sec = data.get("eval_duration", 0) / 1e9
 
             print(f"  wall_clock={elapsed:.2f}s  ollama_eval_time={eval_duration_sec:.2f}s")
             print(f"  answer: {answer[:150]}...")
 
             rows.append({
-                "model": f"{MODEL} (local)",
+                "model": f"{settings.ollama_model} (local)",
                 "prompt_id": item["id"],
                 "prompt_label": item["label"],
                 "latency_sec": round(elapsed, 3),
@@ -51,15 +61,15 @@ def run_local_bakeoff():
             })
 
         except httpx.RequestError as exc:
-            print(f"  FAILED: {type(exc).__name__} — is `ollama serve` running?")
+            print(f"  FAILED after {settings.max_retries} attempts: {type(exc).__name__} — is `ollama serve` running?")
             rows.append({
-                "model": f"{MODEL} (local)",
+                "model": f"{settings.ollama_model} (local)",
                 "prompt_id": item["id"],
                 "prompt_label": item["label"],
                 "latency_sec": None,
                 "cost_usd": 0.0,
                 "total_tokens": None,
-                "answer": f"CALL FAILED: {type(exc).__name__}: {exc}",
+                "answer": f"CALL FAILED after {settings.max_retries} attempts: {type(exc).__name__}: {exc}",
                 "usable": "N",
             })
 

@@ -1,4 +1,3 @@
-
 import csv
 import time
 
@@ -20,7 +19,7 @@ MODELS = settings.openrouter_models
 
 
 def prompt_fields(item) -> tuple[str, str, str]:
-    
+
     if isinstance(item, dict):
         pid = item.get("id", "")
         category = item.get("label") or item.get("category", "")
@@ -31,22 +30,37 @@ def prompt_fields(item) -> tuple[str, str, str]:
 
 
 def call_model(model: str, prompt: str) -> tuple[dict, float]:
-    """Returns (response_json, latency_seconds)."""
+    """Returns (response_json, latency_seconds). Retries on transient
+    request errors (timeouts, connection issues) up to settings.max_retries
+    times, with exponential backoff. Does NOT retry on HTTP error responses
+    (4xx/5xx) — those are raised immediately since retrying a bad request
+    or an auth failure won't fix it."""
     body = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
-         
         "max_tokens": settings.max_output_tokens,
-    
         "usage": {"include": True},
     }
-    start = time.perf_counter()
-    with httpx.Client(timeout=settings.request_timeout_s) as client:
-        response = client.post(URL, headers=HEADERS, json=body)
-        response.raise_for_status()
-        data = response.json()
-    elapsed = time.perf_counter() - start
-    return data, elapsed
+
+    last_exc = None
+    for attempt in range(1, settings.max_retries + 1):
+        start = time.perf_counter()
+        try:
+            with httpx.Client(timeout=settings.request_timeout_s) as client:
+                response = client.post(URL, headers=HEADERS, json=body)
+                response.raise_for_status()
+                data = response.json()
+            elapsed = time.perf_counter() - start
+            return data, elapsed
+        except httpx.RequestError as exc:
+            last_exc = exc
+            if attempt < settings.max_retries:
+                print(f"    attempt {attempt}/{settings.max_retries} failed: {type(exc).__name__} — retrying...")
+                time.sleep(2 ** (attempt - 1))  # 1s, 2s, 4s...
+            else:
+                print(f"    attempt {attempt}/{settings.max_retries} failed: {type(exc).__name__} — giving up.")
+
+    raise last_exc
 
 
 def run_bakeoff():
@@ -99,7 +113,7 @@ def run_bakeoff():
                     "usable": "N",  # a failed call is definitionally not usable
                 })
             except httpx.RequestError as exc:
-                print(f"  FAILED: {type(exc).__name__}")
+                print(f"  FAILED after {settings.max_retries} attempts: {type(exc).__name__}")
                 rows.append({
                     "model": model,
                     "prompt_id": pid,
@@ -109,7 +123,7 @@ def run_bakeoff():
                     "prompt_tokens": None,
                     "completion_tokens": None,
                     "total_tokens": None,
-                    "answer": f"CALL FAILED: {type(exc).__name__}: {exc}",
+                    "answer": f"CALL FAILED after {settings.max_retries} attempts: {type(exc).__name__}: {exc}",
                     "usable": "N",
                 })
 

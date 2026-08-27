@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 
 from pydantic_settings import BaseSettings
@@ -9,12 +7,13 @@ SHARED_ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 
 
 class Settings(BaseSettings):
-    ollama_base_url: str = "http://localhost:11434/api/chat"
-    ollama_model: str = "llama3.2"  
-    num_runs: int = 50
+    openrouter_base_url: str = "https://openrouter.ai/api/v1/chat/completions"
+    openrouter_api_key: str
+    model: str = "openai/gpt-4o-mini"
 
     class Config:
         env_file = SHARED_ENV_PATH
-        extra = "ignore"  
+        extra = "ignore"
+
 
 settings = Settings()
