@@ -5,7 +5,7 @@ CRUD functions for the prompt store, backed by PostgreSQL. This is the
 layer your other scripts import from — they never write SQL directly.
 """
 
-from db import get_connection, init_db
+from db import get_connection
 
 
 def add_prompt(name: str, text: str, tags: str = "") -> None:
@@ -58,7 +58,3 @@ def delete_prompt(name: str) -> bool:
     with get_connection() as conn:
         cursor = conn.execute("DELETE FROM prompts WHERE name = %s", (name,))
         return cursor.rowcount > 0
-
-
-# Ensure the table exists as soon as this module is imported.
-init_db()

@@ -4,6 +4,7 @@ import time
 import httpx
 
 from config import settings
+from db import init_db
 from store import list_prompts
 
 URL = f"{settings.openrouter_base_url}/chat/completions"
@@ -127,4 +128,5 @@ def run_bakeoff():
 
 
 if __name__ == "__main__":
+    init_db()  # explicit, once, at startup — not a side effect of importing store
     run_bakeoff()
