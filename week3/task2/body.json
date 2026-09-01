@@ -1,0 +1,4 @@
+{
+  "text": "Order #4821 placed by Priya Sharma on 2026-08-15 for 2 units of Model-X Router. Total: $199.98. Shipping to 44 MG Road, Chennai.",
+  "schema_description": "customer_name, order_id, product, quantity, total, ship_city"
+}
