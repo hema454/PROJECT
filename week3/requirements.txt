@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+httpx
+pydantic-settings
+json-repair
+sqlalchemy
+psycopg[binary]
+alembic
+pytest
+pytest-asyncio
