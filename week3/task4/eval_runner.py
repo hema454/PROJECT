@@ -1,8 +1,16 @@
+import asyncio
+import sys
 from pathlib import Path
 from typing import Callable
 
 from golden_set import GOLDEN_SET, GoldenCase
 from scorer import score_case
+
+# Path to the folder containing the FastAPI service's service.py --
+# adjust this if you move eval_suite relative to the service.
+SERVICE_DIR = Path(__file__).resolve().parent.parent / "task2"
+sys.path.insert(0, str(SERVICE_DIR))
+import service  
 
 ModelCall = Callable[[str, str], dict]
 
@@ -20,16 +28,8 @@ def run_eval(model_call: ModelCall, cases: list[GoldenCase] | None = None) -> tu
 
 def _build_live_model_call() -> ModelCall:
     """Builds the model_call for scoring the current, live extraction
-    prompt+model. Import of the service module happens here, at call-build
-    time, in main() -- not hardcoded via sys.path at module level.
+    prompt+model.
     """
-    import asyncio
-    import sys
-
-    service_dir = Path(__file__).resolve().parent.parent / "task2"
-    sys.path.insert(0, str(service_dir))
-    import service  # the FastAPI service's extraction module
-
     def _call(text: str, schema_description: str) -> dict:
         data, _repaired = asyncio.run(service.extract(text, schema_description))
         return data
@@ -42,7 +42,6 @@ def main() -> None:
     passed, total = run_eval(model_call)
     rate = passed / total * 100 if total else 0.0
     print(f"Pass rate: {passed}/{total} ({rate:.1f}%)")
-    import sys
     sys.exit(0 if passed == total else 1)
 
 

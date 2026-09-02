@@ -60,7 +60,6 @@ async def extract_endpoint(
     conversation_id = conversation.id
 
     history = await service.get_conversation_history(db, tenant_id, conversation_id)
-    await db.rollback()
 
     try:
         data, repaired = await service.extract(req.text, req.schema_description, history)
@@ -86,7 +85,6 @@ async def extract_stream_endpoint(
     conversation_id = conversation.id
 
     history = await service.get_conversation_history(db, tenant_id, conversation_id)
-    await db.rollback()
 
     async def token_gen():
         chunks: list[str] = []

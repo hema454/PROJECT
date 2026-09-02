@@ -133,7 +133,8 @@ async def get_or_create_conversation(
 async def get_conversation_history(
     session: AsyncSession, tenant_id: uuid.UUID, conversation_id: uuid.UUID
 ) -> list[dict[str, str]]:
-    messages = await repository.list_messages_for_conversation(session, tenant_id, conversation_id)
+    async with session.begin():
+        messages = await repository.list_messages_for_conversation(session, tenant_id, conversation_id)
     return [{"role": m.role, "content": m.content} for m in messages]
 
 
