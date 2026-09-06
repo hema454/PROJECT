@@ -1,0 +1,122 @@
+[
+  {
+    "question": "How can I check my current rate limit usage?",
+    "doc_name": "api_reference.pdf",
+    "page": 1,
+    "gold_snippet": "Rate limit usage can be checked at any time by calling the /usage endpoint"
+  },
+  {
+    "question": "What status code is returned when the rate limit is exceeded?",
+    "doc_name": "api_reference.pdf",
+    "page": 1,
+    "gold_snippet": "Exceeding the limit returns a 429 status code"
+  },
+  {
+    "question": "How many items does a list endpoint return per page by default?",
+    "doc_name": "api_reference.pdf",
+    "page": 1,
+    "gold_snippet": "List endpoints return a maximum of 100 items per page by default"
+  },
+  {
+    "question": "How many times are failed webhook deliveries retried?",
+    "doc_name": "api_reference.pdf",
+    "page": 1,
+    "gold_snippet": "Failed webhook deliveries are retried up to five times with exponential backoff"
+  },
+  {
+    "question": "How long are older API versions supported after a new one is released?",
+    "doc_name": "api_reference.pdf",
+    "page": 1,
+    "gold_snippet": "Older versions remain supported for at least twelve months after a new version is released"
+  },
+  {
+    "question": "How long did Engineering estimate the billing dashboard work would take?",
+    "doc_name": "meeting_notes_scanned.pdf",
+    "page": 1,
+    "gold_snippet": "Engineering estimated six weeks for the billing work"
+  },
+  {
+    "question": "What are the Q3 priority items discussed in the meeting?",
+    "doc_name": "meeting_notes_scanned.pdf",
+    "page": 1,
+    "gold_snippet": "improving onboarding flow, reducing churn in the free tier, and shipping the new billing dashboard"
+  },
+  {
+    "question": "When will Marketing begin the campaign?",
+    "doc_name": "meeting_notes_scanned.pdf",
+    "page": 1,
+    "gold_snippet": "Marketing will begin the campaign once the dashboard reaches beta"
+  },
+  {
+    "question": "How long does an on-call engineer have to acknowledge a page before it escalates?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 1,
+    "gold_snippet": "The engineer has fifteen minutes to acknowledge the page before it escalates to the secondary on-call"
+  },
+  {
+    "question": "What does SEV1 mean in the incident severity scale?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 1,
+    "gold_snippet": "SEV1, meaning full service outage affecting all customers"
+  },
+  {
+    "question": "What review is required before code is merged to the main branch?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 1,
+    "gold_snippet": "receiving at least one approving review"
+  },
+  {
+    "question": "What must a new engineer complete before joining the on-call rotation?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 1,
+    "gold_snippet": "completed the incident response training and shadowed at least two live incidents"
+  },
+  {
+    "question": "What is the recovery time objective tested during disaster recovery drills?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 2,
+    "gold_snippet": "recovery time objective of thirty minutes"
+  },
+  {
+    "question": "At what utilization level are services flagged for scaling review?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 2,
+    "gold_snippet": "Services trending above seventy percent sustained utilization are flagged for scaling review"
+  },
+  {
+    "question": "How soon after a SEV1 or SEV2 incident is a post-incident review written?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 2,
+    "gold_snippet": "receives a written post-incident review within five business days"
+  },
+  {
+    "question": "How long is customer data retained after account closure?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 3,
+    "gold_snippet": "typically ninety days after account closure"
+  },
+  {
+    "question": "When does access to customer data automatically expire?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 3,
+    "gold_snippet": "automatically expires after ninety days unless renewed"
+  },
+  {
+    "question": "What is the typical service level objective for availability?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 3,
+    "gold_snippet": "typically ninety nine point nine percent measured over a rolling thirty day window"
+  },
+  {
+    "question": "When are customers proactively notified during a SEV1 incident?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 4,
+    "gold_snippet": "Customers are notified proactively for any SEV1 incident lasting longer than thirty minutes"
+  },
+  {
+    "question": "How long is the onboarding program for new engineers?",
+    "doc_name": "platform_operations_manual.pdf",
+    "page": 5,
+    "gold_snippet": "New engineers complete a two week onboarding program"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Refunds are processed within 5 to 7 business days after the request is approved.",
+    "source": "billing_faq.pdf",
+    "page": 1,
+    "metadata": {"category": "billing"}
+  },
+  {
+    "content": "You can upgrade your plan at any time from the billing dashboard; changes are prorated.",
+    "source": "billing_faq.pdf",
+    "page": 1,
+    "metadata": {"category": "billing"}
+  },
+  {
+    "content": "Annual plans come with a 20 percent discount compared to monthly billing.",
+    "source": "billing_faq.pdf",
+    "page": 2,
+    "metadata": {"category": "billing"}
+  },
+  {
+    "content": "A failed payment triggers three retry attempts over one week before the account is suspended.",
+    "source": "billing_faq.pdf",
+    "page": 2,
+    "metadata": {"category": "billing"}
+  },
+  {
+    "content": "You will receive an email receipt after every successful charge to your account.",
+    "source": "billing_faq.pdf",
+    "page": 3,
+    "metadata": {"category": "billing"}
+  }
+]

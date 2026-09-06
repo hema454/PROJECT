@@ -1,0 +1,17 @@
+sentence-transformers>=3.0.0
+numpy>=1.24.0
+pypdf>=5.0.0
+pytesseract>=0.3.10
+pdf2image>=1.17.0
+Pillow>=10.0.0
+fastapi
+uvicorn
+psycopg[binary]
+pydantic
+pydantic-settings
+httpx
+langchain-postgres
+langchain-openai
+pytest
+tiktoken
+pgvector
