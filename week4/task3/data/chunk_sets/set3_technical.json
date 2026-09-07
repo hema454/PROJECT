@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Include your API key in the Authorization header of every request as a Bearer token.",
+    "source": "api_reference.pdf",
+    "page": 1,
+    "metadata": {"category": "technical"}
+  },
+  {
+    "content": "Rate limits are capped at 1000 requests per minute per API key on the standard plan.",
+    "source": "api_reference.pdf",
+    "page": 1,
+    "metadata": {"category": "technical"}
+  },
+  {
+    "content": "The API returns a 429 status code when you exceed the configured rate limit.",
+    "source": "api_reference.pdf",
+    "page": 2,
+    "metadata": {"category": "technical"}
+  },
+  {
+    "content": "Webhooks notify your server when an event occurs, verified using a signature header.",
+    "source": "api_reference.pdf",
+    "page": 2,
+    "metadata": {"category": "technical"}
+  },
+  {
+    "content": "Pagination for list endpoints uses a cursor parameter; the final page has an empty next_cursor.",
+    "source": "api_reference.pdf",
+    "page": 3,
+    "metadata": {"category": "technical"}
+  }
+]

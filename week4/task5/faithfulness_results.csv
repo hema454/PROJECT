@@ -1,0 +1,26 @@
+question,answer,verdict
+How can I check my current rate limit usage?,You can check your current rate limit usage at any time by calling the /usage endpoint. This endpoint returns the current count and the time remaining until the limit resets.,SUPPORTED
+What status code is returned when the rate limit is exceeded?,The status code returned when the rate limit is exceeded is 429.,SUPPORTED
+How many items does a list endpoint return per page by default?,100 items per page.,UNSUPPORTED: 100 items per page.
+How many times are failed webhook deliveries retried?,"According to the text, failed webhook deliveries are retried up to 5 times with exponential backoff.",SUPPORTED
+How long are older API versions supported after a new one is released?,At least twelve months.,UNSUPPORTED: Breaking changes are announced at least ninety days in advance
+How long did Engineering estimate the billing dashboard work would take?,There is no mention of an estimate of time for the billing dashboard work in the provided context.,UNSUPPORTED: There is no mention of an estimate of time for the billing dashboard work in the provided context.
+What are the Q3 priority items discussed in the meeting?,"There is no mention of Q3 priority items in the provided context. The provided text appears to be a Platform Operations Manual, and it discusses error budgets, reliability dashboards, incident response procedures, and severity levels, but does not mention a meeting or Q3 priority items.",UNSUPPORTED: There is no mention of a meeting or Q3 priority items.
+When will Marketing begin the campaign?,"The provided context does not mention the Marketing team or a campaign, so there is no answer to when Marketing will begin a campaign.",UNSUPPORTED: There is no mention of the Marketing team or a campaign in the context.
+How long does an on-call engineer have to acknowledge a page before it escalates?,An on-call engineer has 15 minutes to acknowledge a page before it escalates to the secondary on-call.,SUPPORTED
+What does SEV1 mean in the incident severity scale?,"According to the text, SEV1 means a full service outage affecting all customers.",SUPPORTED
+What review is required before code is merged to the main branch?,"According to the Deployment Process, a review is required before code is merged to the main branch. The review must be approving and at least one approving review is required for the code to pass.","UNSUPPORTED: The answer claims that ""at least one approving review is required for the code to pass"", but the context only mentions that code is merged to the main branch ""after passing automated tests and receiving at least one approving review"", not that receiving an approving review is a requirement for the code to pass. The answer implies that passing the review is a necessary condition, but the context does not explicitly state this."
+What must a new engineer complete before joining the on-call rotation?,"According to the provided text, a new engineer must complete the following before joining the on-call rotation:
+
+1. Incident response training
+2. Shadowing at least two live incidents with a senior engineer
+
+Additionally, as mentioned in the 20. Onboarding for New Engineers section, the onboarding program also includes a shadow on-call shift alongside an experienced engineer, but this is specifically mentioned as part of the onboarding program, not as a separate requirement.",SUPPORTED
+What is the recovery time objective tested during disaster recovery drills?,The recovery time objective (RTO) of thirty minutes is tested during disaster recovery drills.,SUPPORTED
+At what utilization level are services flagged for scaling review?,Services are flagged for scaling review when they trend above 70% sustained utilization.,SUPPORTED
+How soon after a SEV1 or SEV2 incident is a post-incident review written?,Within five business days.,SUPPORTED
+How long is customer data retained after account closure?,"Typically, ninety days after account closure, unless a longer period is required by applicable law.",SUPPORTED
+When does access to customer data automatically expire?,Access to customer data automatically expires after ninety days unless renewed.,SUPPORTED
+What is the typical service level objective for availability?,Ninety nine point nine percent measured over a rolling thirty day window.,SUPPORTED
+When are customers proactively notified during a SEV1 incident?,"Customers are proactively notified during a SEV1 incident lasting longer than thirty minutes. Additionally, updates are posted to the public status page every fifteen minutes until resolution.",SUPPORTED
+How long is the onboarding program for new engineers?,The onboarding program for new engineers is two weeks long.,SUPPORTED

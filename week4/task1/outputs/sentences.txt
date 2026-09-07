@@ -1,0 +1,200 @@
+How do I reset my password?
+Steps to change your login credentials.
+You can update your email address from account settings.
+Two-factor authentication adds an extra layer of login security.
+If you forgot your username, check the confirmation email sent at signup.
+Account deletion is permanent and cannot be undone after 30 days.
+You can merge two accounts by contacting support with both email addresses.
+Session tokens expire after 24 hours of inactivity.
+Enable single sign-on to let your team log in with company credentials.
+Your profile picture can be changed from the account settings page.
+We recommend using a password manager to generate strong passwords.
+Locked accounts are automatically unlocked after one hour.
+You can download all your account data as a CSV export.
+Multiple failed login attempts will temporarily lock your account.
+Update your recovery phone number to regain access faster.
+Guest accounts have limited permissions compared to full members.
+Account roles determine what each team member can view or edit.
+You can revoke access for a former employee from the admin panel.
+Email verification is required before you can invite teammates.
+Deactivating your account pauses billing but keeps your data intact.
+Where can I find my last invoice?
+Your billing history is available under Settings > Payments.
+We accept Visa, Mastercard, and American Express.
+Refunds are processed within 5 to 7 business days.
+You can upgrade your plan at any time from the billing dashboard.
+Downgrading your plan takes effect at the start of the next billing cycle.
+Annual plans come with a 20 percent discount compared to monthly billing.
+A failed payment will trigger three retry attempts over one week.
+You can add a purchase order number to your invoice for procurement.
+Taxes are calculated automatically based on your billing address.
+Enterprise plans include a dedicated account manager.
+You will receive an email receipt after every successful charge.
+Proration is applied automatically when you change plans mid-cycle.
+Cancelling your subscription does not delete your existing data.
+Usage-based billing charges are calculated at the end of each month.
+You can set a spending limit to avoid unexpected overage charges.
+Free trial accounts convert to paid plans automatically unless cancelled.
+Corporate cards can be added as a backup payment method.
+Currency is set automatically based on your account's country.
+Volume discounts apply once your team exceeds 50 seats.
+How do I authenticate requests to the API?
+Include your API key in the Authorization header of every request.
+Rate limits are capped at 1000 requests per minute per key.
+The API returns a 429 status code when you exceed the rate limit.
+All timestamps returned by the API are in UTC.
+Pagination is handled using a cursor parameter in the response.
+Webhooks notify your server when an event occurs in real time.
+You can generate a new API key from the developer dashboard.
+Deprecated endpoints will continue to work for six months after notice.
+The API supports both JSON and XML response formats.
+Sandbox mode lets you test integrations without affecting live data.
+Error responses include a machine-readable error code and message.
+Bulk operations are available through the batch endpoint.
+SDKs are available for Python, JavaScript, and Go.
+You must URL-encode special characters in query parameters.
+The API versions are specified in the request URL path.
+Idempotency keys prevent duplicate charges on retried requests.
+Response payloads are compressed with gzip by default.
+OAuth tokens expire after one hour and must be refreshed.
+Transaction TXN-88214 failed due to an expired card.
+Transaction TXN-88215 failed due to an expired card.
+How do I deploy my application to production?
+Push to the main branch to trigger an automatic deployment.
+Rollbacks can be triggered from the deployment history page.
+Environment variables are managed separately for staging and production.
+Blue-green deployments minimize downtime during releases.
+Health checks run automatically after every deployment.
+You can configure custom domains under the project settings.
+Build logs are retained for 30 days after each deployment.
+Deployments to production require approval from a team admin.
+Auto-scaling adjusts server capacity based on incoming traffic.
+You can preview a branch deployment before merging to main.
+Failed deployments automatically roll back to the last stable version.
+Static assets are served through a global content delivery network.
+Zero-downtime deployments swap traffic gradually between versions.
+Container images are scanned for vulnerabilities before deployment.
+You can schedule deployments to run during low-traffic hours.
+Deployment notifications can be sent to a Slack channel.
+Secrets should never be committed directly into your repository.
+Canary releases expose a new version to a small percentage of users.
+The staging environment mirrors production configuration closely.
+How can I contact customer support?
+Our support team typically responds within 24 hours.
+Priority support is included with enterprise plans.
+You can open a support ticket directly from the help center.
+Live chat is available on weekdays from 9 AM to 6 PM.
+Check our status page for ongoing incidents or outages.
+Community forums are a good place for non-urgent questions.
+You can escalate a ticket by replying with 'urgent' in the subject.
+Screen recordings help our team diagnose issues faster.
+Support requests are triaged automatically based on severity.
+We publish a public changelog for every product update.
+Feature requests can be submitted through the feedback portal.
+Our documentation is searchable and updated weekly.
+You can schedule a call with a solutions engineer for complex setups.
+Bug reports should include steps to reproduce the issue.
+Support tickets are automatically closed after 14 days of inactivity.
+You can attach log files directly to a support ticket.
+Response times are faster for accounts on paid plans.
+Our team hosts monthly office hours for open questions.
+You can rate your support experience after a ticket is resolved.
+How is my data encrypted?
+Data is encrypted at rest using AES-256 encryption.
+All traffic between your browser and our servers uses TLS.
+We undergo an independent security audit every year.
+You can enable IP allowlisting to restrict account access.
+Audit logs record every administrative action on your account.
+We are compliant with SOC 2 Type II standards.
+Personal data can be deleted upon request under GDPR.
+Security patches are applied automatically without downtime.
+You can require single sign-on for your entire organization.
+We run a public bug bounty program for responsible disclosure.
+Access tokens are scoped to the minimum permissions required.
+Backups are encrypted and stored in a geographically separate region.
+Suspicious login attempts trigger an email alert automatically.
+You can review active sessions and revoke them individually.
+Sensitive fields are masked by default in the admin interface.
+Penetration testing is performed quarterly by a third party.
+Data residency options let you choose where your data is stored.
+Employee access to customer data is logged and reviewed regularly.
+We follow the principle of least privilege for internal systems.
+How do I connect my Slack workspace?
+You can integrate with Google Drive from the connections page.
+Zapier lets you automate workflows without writing code.
+The Salesforce integration syncs contacts every 15 minutes.
+You can build a custom integration using our webhook events.
+Single sign-on integrations support SAML and OAuth 2.0.
+The Jira integration creates a ticket automatically on error.
+You can disconnect an integration at any time from settings.
+Our marketplace lists over 100 verified third-party integrations.
+The GitHub integration comments on pull requests with build status.
+Calendar integrations sync events in both directions.
+The Microsoft Teams integration sends daily summary notifications.
+You can map custom fields when connecting to your CRM.
+Integration logs show the last 50 sync attempts and their status.
+The Stripe integration reconciles payments automatically.
+Some integrations require admin approval before activation.
+The Notion integration exports pages as searchable documents.
+You can test an integration in a sandbox before going live.
+The Zendesk integration links support tickets to customer accounts.
+Rate limits for integrations are separate from your main API quota.
+Why is the dashboard loading slowly?
+Large datasets may take longer to render on the analytics page.
+Caching reduces load times for frequently accessed pages.
+You can enable lazy loading for large tables and lists.
+Query performance improves significantly after adding an index.
+The search feature indexes new content within a few minutes.
+High traffic periods may briefly increase response times.
+You can monitor system performance from the status dashboard.
+Database connections are pooled to reduce overhead.
+Compressing images can noticeably speed up page load times.
+Background jobs are queued to avoid blocking user requests.
+You can view slow query logs from the performance tab.
+CDN caching reduces latency for users in different regions.
+Memory usage spikes are logged and available for review.
+Horizontal scaling adds more servers during peak demand.
+The mobile app uses pagination to reduce initial load size.
+Timeouts are configurable for long-running batch operations.
+Cold starts can add a short delay to the first request.
+You can benchmark response times using the developer console.
+Reducing the payload size improves API response speed.
+The weather today is sunny with a light breeze.
+She adopted a small orange kitten from the shelter.
+The train departs from platform four at nine o'clock.
+He baked a loaf of sourdough bread over the weekend.
+The museum's new exhibit features ancient pottery.
+They hiked to the summit before sunrise.
+The recipe calls for two cups of flour and one egg.
+Her favorite season is autumn because of the changing leaves.
+The library extended its hours during exam week.
+A gentle rain fell over the city all afternoon.
+The chess club meets every Thursday evening.
+He planted tomatoes and basil in the backyard garden.
+The orchestra rehearsed for three hours before the concert.
+A flock of geese flew south as winter approached.
+She learned to play the violin when she was seven.
+The bakery sells out of croissants by mid-morning.
+They watched the sunset from the rooftop terrace.
+The old lighthouse still guides ships along the coast.
+He collects vintage postcards from flea markets.
+The children built a sandcastle near the shoreline.
+A light fog settled over the valley at dawn.
+She volunteers at the animal shelter on weekends.
+The farmers market opens at seven every Saturday.
+He repaired the old wooden fence over the summer.
+The documentary explored the history of jazz music.
+They planted a row of maple trees along the driveway.
+The bookstore hosts a poetry reading once a month.
+A stray cat has been visiting the porch every evening.
+She knitted a scarf for her grandfather's birthday.
+The trail winds through a dense pine forest.
+He fixed the leaky faucet in under an hour.
+The kite soared high above the crowded beach.
+She organized her bookshelf by color instead of author.
+The ferry crossing takes about forty minutes.
+A warm breeze carried the smell of fresh bread.
+The choir practiced a new song for the winter concert.
+He sketched the old bridge from the riverbank.
+The puppy chased its tail around the living room.
+They roasted marshmallows over the campfire.

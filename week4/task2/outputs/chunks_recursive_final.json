@@ -1,0 +1,478 @@
+[
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_0",
+    "text": "API Reference Guide\n1. Authentication\nAll API requests must include an API key in the Authorization header. Keys can be\ngenerated from the developer dashboard under Settings, then API Keys. Each key is scoped\nto a single project and can be revoked at any time without affecting other keys.\nRequests without a valid key return a 401 Unauthorized response with a JSON body\ndescribing the error. Expired keys return the same status code but a different error\nmessage.\n2. Rate Limits\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_1",
+    "text": " return the same status code but a different error\nmessage.\n2. Rate Limits\n return the same status code but a different error\nmessage.\n2. Rate Limits\nRequests are limited to 1000 per minute per API key on the standard plan, and 5000 per\nminute on the enterprise plan. Exceeding the limit returns a 429 status code along with a\nRetry-After header indicating how many seconds to wait before retrying.\nRate limit usage can be checked at any time by calling the /usage endpoint, which returns\nthe current count and the time remaining until the limit resets.\n3. Pagination\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 405,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_2",
+    "text": "current count and the time remaining until the limit resets.\n3. Pagination\ncurrent count and the time remaining until the limit resets.\n3. Pagination\nList endpoints return a maximum of 100 items per page by default. Use the cursor parameter\nfrom the previous response to fetch the next page. The final page is indicated by an empty\nnext_cursor field in the response body.\n4. Webhooks\nWebhooks notify your server when an event occurs, such as a completed transaction or a\nfailed payment. Configure webhook endpoints from the dashboard, and verify incoming\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 898,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_3",
+    "text": "yment. Configure webhook endpoints from the dashboard, and verify incoming\nyment. Configure webhook endpoints from the dashboard, and verify incoming\nrequests using the signature header to confirm they originated from our servers.\nFailed webhook deliveries are retried up to five times with exponential backoff. After the\nfifth failure, the webhook is marked as failing and an alert email is sent to the account\nowner.\n5. Error Codes\nThe API uses standard HTTP status codes. 400 indicates a malformed request, 401 indicates\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 1378,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_4",
+    "text": "andard HTTP status codes. 400 indicates a malformed request, 401 indicates\nandard HTTP status codes. 400 indicates a malformed request, 401 indicates\nmissing or invalid authentication, 404 indicates the resource does not exist, and 500\nindicates an internal server error. Every error response includes a machine-readable code\nand a human-readable message in the response body.\n6. Versioning\nThe API version is specified in the URL path, for example /v2/transactions. Older versions\nremain supported for at least twelve months after a new version is released, and breaking\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 1827,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "api_reference.pdf_p1_recursive_5",
+    "text": "d for at least twelve months after a new version is released, and breaking\nd for at least twelve months after a new version is released, and breaking\nchanges are always announced at least ninety days in advance on the developer changelog.\nInternal Engineering Docs -- Confidential -- Page 1\n",
+    "source": "api_reference.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 2324,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "api_reference.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "meeting_notes_scanned.pdf_p1_recursive_0",
+    "text": "Meeting Notes -- Q3 Planning\n\nAttendees discussed the roadmap for the next quarter.\nPriority items include improving onboarding flow, reducing\nchurn in the free tier, and shipping the new billing\ndashboard. Engineering estimated six weeks for the billing\nwork. Marketing will begin the campaign once the dashboard\nreaches beta.\n",
+    "source": "meeting_notes_scanned.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "meeting_notes_scanned.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "meeting_notes_scanned.pdf_p2_recursive_0",
+    "text": "Meeting Notes -- Q3 Planning\n\nAttendees discussed the roadmap for the next quarter.\nPriority items include improving onboarding flow, reducing\nchurn in the free tier, and shipping the new billing\ndashboard. Engineering estimated six weeks for the billing\nwork. Marketing will begin the campaign once the dashboard\nreaches beta.\n",
+    "source": "meeting_notes_scanned.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "meeting_notes_scanned.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_0",
+    "text": "Platform Operations Manual\n1. Incident Response Overview\nWhen a production incident is detected, the on-call engineer is paged automatically\nthrough the alerting system. The engineer has fifteen minutes to acknowledge the page\nbefore it escalates to the secondary on-call. Acknowledging an incident creates a\ndedicated channel where all communication about the issue must take place.\nSeverity levels range from SEV1, meaning full service outage affecting all customers, down\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_1",
+    "text": "range from SEV1, meaning full service outage affecting all customers, down\nrange from SEV1, meaning full service outage affecting all customers, down\nto SEV4, meaning a minor cosmetic issue with no customer impact. SEV1 and SEV2 incidents\nrequire an incident commander to be assigned within ten minutes of detection.\n2. Deployment Process\nAll changes to production services go through the standard deployment pipeline. Code is\nmerged to the main branch after passing automated tests and receiving at least one\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 400,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_2",
+    "text": "o the main branch after passing automated tests and receiving at least one\no the main branch after passing automated tests and receiving at least one\napproving review. Merging triggers a staging deployment automatically, followed by a\nmanual promotion step to production once staging checks pass.\nDeployments outside of business hours require explicit approval from a team lead unless\nthey are fixing an active incident. Rollbacks can be triggered from the deployment\ndashboard and typically complete within two minutes for stateless services.\n3. Monitoring and Alerting\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 835,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_3",
+    "text": "lete within two minutes for stateless services.\n3. Monitoring and Alerting\nlete within two minutes for stateless services.\n3. Monitoring and Alerting\nEvery service exposes a standard set of health metrics including request latency, error\nrate, and throughput. Dashboards are automatically generated from these metrics and linked\nfrom the service catalog. Alerts are configured against these dashboards using thresholds\nagreed upon during the service's initial design review.\nAlert fatigue is taken seriously. Any alert that fires more than three times in a week\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 1331,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_4",
+    "text": "e is taken seriously. Any alert that fires more than three times in a week\ne is taken seriously. Any alert that fires more than three times in a week\nwithout leading to action is flagged for review during the next reliability meeting, and\neither tuned, removed, or converted into an automated remediation.\n4. On-Call Rotation\nEngineers rotate through on-call duty on a weekly basis, with primary and secondary\nassignments published two weeks in advance. Swapping shifts is allowed with mutual\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 1818,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p1_recursive_5",
+    "text": "nts published two weeks in advance. Swapping shifts is allowed with mutual\nnts published two weeks in advance. Swapping shifts is allowed with mutual\nagreement between engineers, recorded in the on-call scheduling tool so the paging system\nstays accurate.\nNew engineers do not join the on-call rotation until they have completed the incident\nresponse training and shadowed at least two live incidents with a senior engineer.\nPlatform Operations Manual -- Internal -- Confidential -- Page 1\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 1,
+    "char_offset_in_page": 2236,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 1,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_0",
+    "text": "5. Disaster Recovery\nDisaster recovery drills are conducted quarterly, simulating the loss of an entire region.\nDuring a drill, traffic is manually failed over to the backup region and the team measures\nthe time to full recovery against the documented recovery time objective of thirty\nminutes.\nBackup regions are kept in near real-time sync using asynchronous replication. Any drift\nbeyond the defined replication lag threshold triggers an automatic alert to the\ninfrastructure team.\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_1",
+    "text": "tion lag threshold triggers an automatic alert to the\ninfrastructure team.\ntion lag threshold triggers an automatic alert to the\ninfrastructure team.\n6. Capacity Planning\nCapacity reviews happen monthly, comparing current resource utilization against forecasted\ngrowth. Services trending above seventy percent sustained utilization are flagged for\nscaling review before they risk hitting hard limits during peak traffic.\nForecasts are built from a rolling twelve month trend combined with known upcoming product\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 410,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_2",
+    "text": "ilt from a rolling twelve month trend combined with known upcoming product\nilt from a rolling twelve month trend combined with known upcoming product\nlaunches communicated by the product team during quarterly planning.\n7. Security Review Process\nAny new service or significant architectural change requires a security review before\nlaunch. Reviews cover authentication, data handling, and third party dependencies, and are\nconducted by a rotating member of the security team.\nFindings from a security review are categorized by severity and tracked in the same issue\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 847,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_3",
+    "text": " security review are categorized by severity and tracked in the same issue\n security review are categorized by severity and tracked in the same issue\ntracker used for regular engineering work, with critical findings blocking launch until\nresolved.\n8. Change Management\nSignificant infrastructure changes, such as database migrations or network\nreconfigurations, require a written change plan reviewed by at least two engineers outside\nthe immediate team. The plan must include a rollback procedure and an estimate of customer\nimpact.\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 1338,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_4",
+    "text": "plan must include a rollback procedure and an estimate of customer\nimpact.\nplan must include a rollback procedure and an estimate of customer\nimpact.\nEmergency changes made during an active incident are exempt from the standard review\nprocess but must be documented retroactively within twenty four hours.\n9. Post-Incident Reviews\nEvery SEV1 and SEV2 incident receives a written post-incident review within five business\ndays. The review focuses on timeline reconstruction and contributing factors rather than\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 1797,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p2_recursive_5",
+    "text": "ew focuses on timeline reconstruction and contributing factors rather than\new focuses on timeline reconstruction and contributing factors rather than\nassigning individual blame, following a blameless postmortem approach.\nAction items from post-incident reviews are tracked to completion and reported on monthly\nduring the reliability review meeting attended by engineering leadership.\nPlatform Operations Manual -- Internal -- Confidential -- Page 2\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 2,
+    "char_offset_in_page": 2232,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 2,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_0",
+    "text": "10. Vendor Management\nThird party vendors providing infrastructure or data processing services are reviewed\nannually for security compliance and contractual SLA adherence. A vendor risk score is\nmaintained and updated whenever a vendor reports an incident affecting their service.\nNew vendor relationships require sign off from both the security team and legal before any\nproduction data can be shared.\n11. Data Retention\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_1",
+    "text": "eam and legal before any\nproduction data can be shared.\n11. Data Retention\neam and legal before any\nproduction data can be shared.\n11. Data Retention\nCustomer data is retained according to the policy specified in the terms of service,\ntypically ninety days after account closure unless a longer period is required by\napplicable law. Deletion requests are processed within thirty days and confirmed to the\nrequesting customer by email.\nBackups containing deleted customer data are purged on a rolling schedule to ensure they\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 347,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_2",
+    "text": "ning deleted customer data are purged on a rolling schedule to ensure they\nning deleted customer data are purged on a rolling schedule to ensure they\ndo not outlive the primary data retention window by more than one additional backup cycle.\n12. Access Control\nProduction access is granted on a least privilege basis and reviewed quarterly by each\nteam lead. Access to customer data specifically requires a documented business\njustification and automatically expires after ninety days unless renewed.\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 796,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_3",
+    "text": "\njustification and automatically expires after ninety days unless renewed.\n\njustification and automatically expires after ninety days unless renewed.\nAll production access changes are logged and available for audit through the internal\naccess management dashboard, which is reviewed by the security team monthly.\n13. Backup Procedures\nDatabases are backed up continuously using write ahead log shipping, with full snapshots\ntaken daily and retained for thirty days. Restore procedures are tested monthly against a\nstaging environment to confirm backup integrity.\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 1221,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_4",
+    "text": " tested monthly against a\nstaging environment to confirm backup integrity.\n tested monthly against a\nstaging environment to confirm backup integrity.\nBackup restore drills are timed and the results are compared against the documented\nrecovery point objective to ensure the process still meets business requirements as data\nvolume grows.\n14. Service Level Objectives\nEach customer facing service defines a service level objective for availability, typically\nninety nine point nine percent measured over a rolling thirty day window. Error budgets\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 1709,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p3_recursive_5",
+    "text": "oint nine percent measured over a rolling thirty day window. Error budgets\noint nine percent measured over a rolling thirty day window. Error budgets\nderived from this objective are tracked on the reliability dashboard.\nWhen a service exhausts its error budget for the month, new feature launches for that\nservice are paused until the team completes a reliability focused sprint.\nPlatform Operations Manual -- Internal -- Confidential -- Page 3\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 3,
+    "char_offset_in_page": 2179,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 3,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_0",
+    "text": "15. Escalation Procedures\nIf an incident is not resolved within the expected timeframe for its severity, it\nautomatically escalates to the engineering manager and, for SEV1 incidents, to the\ndirector of engineering. Escalation does not remove the original on-call engineer from the\nincident.\nCustomers are notified proactively for any SEV1 incident lasting longer than thirty\nminutes, with updates posted to the public status page every fifteen minutes until\nresolution.\n16. Communication Protocols\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_1",
+    "text": "s page every fifteen minutes until\nresolution.\n16. Communication Protocols\ns page every fifteen minutes until\nresolution.\n16. Communication Protocols\nAll incident communication happens in the dedicated incident channel to keep a single\nsource of truth. Direct messages about an active incident are discouraged since they\nfragment the timeline needed for the post-incident review.\nStatus page updates use plain, non-technical language so customers without engineering\nbackgrounds can understand the impact and expected resolution time.\n17. Compliance Requirements\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 424,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_2",
+    "text": "stand the impact and expected resolution time.\n17. Compliance Requirements\nstand the impact and expected resolution time.\n17. Compliance Requirements\nThe platform maintains SOC 2 Type II certification, renewed annually through an\nindependent audit. Engineers are required to complete compliance training during\nonboarding and annually thereafter.\nAny change that affects data handling for regulated customers must be reviewed against the\ncurrent compliance checklist before deployment to production.\n18. Cost Optimization\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 912,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_3",
+    "text": "ompliance checklist before deployment to production.\n18. Cost Optimization\nompliance checklist before deployment to production.\n18. Cost Optimization\nInfrastructure costs are reviewed monthly by each team against a budget set during\nquarterly planning. Services exceeding budget by more than fifteen percent require a cost\nreview before the following month's spend is approved.\nIdle or oversized resources identified by the automated cost analysis tool are flagged to\nthe owning team with a recommended right sizing action.\n19. Documentation Standards\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 1359,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_4",
+    "text": "g team with a recommended right sizing action.\n19. Documentation Standards\ng team with a recommended right sizing action.\n19. Documentation Standards\nEvery service must maintain a README covering ownership, architecture, and operational\nrunbooks. Documentation is reviewed for accuracy whenever a significant change is made to\nthe service, and stale documentation is flagged during quarterly service reviews.\nRunbooks specifically must include step by step recovery procedures for the most common\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 1836,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p4_recursive_5",
+    "text": "ifically must include step by step recovery procedures for the most common\nifically must include step by step recovery procedures for the most common\nfailure modes, written so that an engineer unfamiliar with the service could follow them\nduring an incident.\nPlatform Operations Manual -- Internal -- Confidential -- Page 4\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 4,
+    "char_offset_in_page": 2258,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 4,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p5_recursive_0",
+    "text": "20. Onboarding for New Engineers\nNew engineers complete a two week onboarding program covering the deployment pipeline,\nincident response process, and internal tooling. Onboarding concludes with a shadow on-\ncall shift alongside an experienced engineer before joining the rotation independently.\nFeedback from new engineers about the onboarding process is collected after thirty days\nand used to update the onboarding materials each quarter.\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 5,
+    "char_offset_in_page": 0,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 5,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  },
+  {
+    "chunk_id": "platform_operations_manual.pdf_p5_recursive_1",
+    "text": "fter thirty days\nand used to update the onboarding materials each quarter.\nfter thirty days\nand used to update the onboarding materials each quarter.\nPlatform Operations Manual -- Internal -- Confidential -- Page 5\n",
+    "source": "platform_operations_manual.pdf",
+    "page_number": 5,
+    "char_offset_in_page": 367,
+    "strategy": "recursive",
+    "metadata": {
+      "source": "platform_operations_manual.pdf",
+      "page": 5,
+      "section": null,
+      "date": "2026-09-03"
+    }
+  }
+]

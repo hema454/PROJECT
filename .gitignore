@@ -1,7 +1,6 @@
 # Environment / secrets
 .env
 *.env
-!.env.example
 
 # Python
 __pycache__/
@@ -35,3 +34,4 @@ Thumbs.db
 
 # Logs
 *.log
+*.npy
