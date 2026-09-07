@@ -8,7 +8,11 @@ _ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=_ENV_PATH, env_file_encoding="utf-8")
+    # extra="ignore": the shared .env at the week4 root has keys used by
+    # OTHER tasks (llm_provider, ollama_base_url, etc.) that this task's
+    # Settings doesn't declare. Without this, pydantic-settings rejects
+    # the whole file for any key it doesn't recognize.
+    model_config = SettingsConfigDict(env_file=_ENV_PATH, env_file_encoding="utf-8", extra="ignore")
 
     # Postgres connection
     database_url: str

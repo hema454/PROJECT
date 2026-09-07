@@ -1,3 +1,23 @@
+"""
+Conversation history storage.
+
+LIMITATION: history is kept in a module-level dict (`_histories`), entirely
+in-memory within a single Python process. This means:
+
+  - Restarting the server wipes all conversation history for every
+    conversation_id -- there is no persistence layer behind it.
+  - In any multi-worker deployment (e.g. uvicorn/gunicorn with more than
+    one worker process), each worker holds its own separate `_histories`
+    dict. The same conversation_id can land on a different worker between
+    requests, in which case it will appear to have no history at all, even
+    mid-conversation.
+
+This is acceptable for local development and single-process testing, but
+is NOT safe for production/multi-worker use as-is. A real deployment
+should replace `_histories` with an external store (e.g. Redis, or a DB
+table keyed by conversation_id) shared across all worker processes.
+"""
+
 import tiktoken
 
 from config import settings

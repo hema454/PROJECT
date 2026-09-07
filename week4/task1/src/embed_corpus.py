@@ -16,8 +16,7 @@ Output:
 import os
 import numpy as np
 from sentence_transformers import SentenceTransformer
-
-MODEL_NAME = "all-MiniLM-L6-v2"
+from config import MODEL_NAME
 
 HERE = os.path.dirname(__file__)
 CORPUS_PATH = os.path.join(HERE, "..", "data", "corpus.txt")

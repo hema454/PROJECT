@@ -1,3 +1,6 @@
+import pytest
+
+from db import get_connection
 from models import SearchRequest
 from search import search
 from search_langchain import search_langchain
@@ -6,11 +9,33 @@ QUERY = "how do I reset my password"
 K = 5
 
 
+def _db_available() -> bool:
+    """
+    Best-effort check for a live DB connection, used to skip these tests
+    in environments (e.g. CI) where the full stack isn't running, instead
+    of letting them crash with a raw connection error.
+    """
+    try:
+        with get_connection():
+            pass
+        return True
+    except Exception:
+        return False
+
+
+requires_db = pytest.mark.skipif(
+    not _db_available(),
+    reason="Database is not reachable — skipping tests that require a live DB.",
+)
+
+
+@requires_db
 def test_langchain_returns_results():
     results = search_langchain(QUERY, k=K)
     assert len(results) > 0
 
 
+@requires_db
 def test_langchain_matches_raw_sql_sources():
     """
     Correctness comparison (not duplicate of test_search.py): both paths should

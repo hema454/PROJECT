@@ -1,6 +1,9 @@
 import sys
 from pathlib import Path
 
+# points at week4/ (the shared embeddings.py), not the old local task4/embeddings.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from pypdf import PdfReader
 
 from db import init_db, insert_chunk

@@ -12,7 +12,12 @@ def search(request: SearchRequest) -> SearchResponse:
     Task 3: if request.filters is set, applies a metadata filter alongside the vector search.
     """
     query_vector = embed_text(request.query)
-    vector_str = str(query_vector)
+    # str(list(...)) rather than str(query_vector): if embed_text() returns a
+    # numpy array, str(array) gives "[0.1234 0.5678 ...]" (space-separated),
+    # but pgvector requires comma-separated "[0.1234,0.5678,...]". Converting
+    # to a plain list first guarantees the comma-separated repr regardless of
+    # whether query_vector is a numpy array or already a Python list.
+    vector_str = str(list(query_vector))
 
     where_clause = "WHERE metadata @> %s" if request.filters else ""
 

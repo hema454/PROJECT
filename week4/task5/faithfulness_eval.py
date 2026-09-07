@@ -3,7 +3,11 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "task4"))
+_WEEK4 = Path(__file__).resolve().parent.parent
+# week4/ for the shared embeddings.py, and task4/ for llm_client.py
+# (only embeddings.py moved up to week4/ -- llm_client.py still lives in task4/)
+sys.path.insert(0, str(_WEEK4))
+sys.path.insert(0, str(_WEEK4 / "task4"))
 
 from embeddings import embed_text  # noqa: E402
 from llm_client import chat  # noqa: E402
@@ -52,6 +56,8 @@ def run(questions_path: str, table_name: str, out_path: str):
 
 
 if __name__ == "__main__":
-    # pass the winning table name from recall_eval.py as the first argument
-    table_name = sys.argv[1] if len(sys.argv) > 1 else "chunks_b"
+    # pass the winning table name from recall_eval.py as the first argument;
+    # defaults to chunks_c, the winning strategy confirmed in decision.md
+    # (was previously chunks_b, which didn't match the actual winner)
+    table_name = sys.argv[1] if len(sys.argv) > 1 else "chunks_c"
     run("eval_questions.json", table_name, "faithfulness_results.csv")

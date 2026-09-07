@@ -37,21 +37,50 @@ def _split_on_separator(text, separator):
     return [p + separator if i < len(parts) - 1 else p for i, p in enumerate(parts)]
 
 
-def _merge_pieces(pieces, chunk_size, overlap):
-    """Greedily merge small pieces into chunks up to chunk_size, with overlap."""
+def _piece_offsets(pieces):
+    """
+    Given pieces that concatenate back to the original text exactly (which
+    _split_on_separator guarantees), return each piece's start offset,
+    relative to the start of that original text.
+    """
+    offsets = []
+    pos = 0
+    for p in pieces:
+        offsets.append(pos)
+        pos += len(p)
+    return offsets
+
+
+def _merge_pieces(pieces, piece_offsets, chunk_size, overlap):
+    """
+    Greedily merge small pieces into chunks up to chunk_size, with overlap.
+
+    Returns a list of (chunk_text, start_offset) tuples. start_offset is in
+    the same coordinate system as piece_offsets (the caller's `text`), and
+    is tracked exactly rather than recovered later via string search:
+    a normal chunk's start is just its first piece's offset, and an
+    overlap-continued chunk's start is computed from the END of the
+    previous chunk minus the overlap length, since the overlap text is
+    literally the tail of that previous chunk.
+    """
     chunks = []
     current = ""
-    for piece in pieces:
+    current_start = None
+    for piece, offset in zip(pieces, piece_offsets):
+        if current_start is None:
+            current_start = offset
         if len(current) + len(piece) <= chunk_size:
             current += piece
         else:
             if current.strip():
-                chunks.append(current)
-            # start next chunk with overlap from the end of the previous one
+                chunks.append((current, current_start))
             overlap_text = current[-overlap:] if overlap > 0 else ""
+            prev_end = current_start + len(current)
+            overlap_start = prev_end - len(overlap_text)
             current = overlap_text + piece
+            current_start = overlap_start
     if current.strip():
-        chunks.append(current)
+        chunks.append((current, current_start))
     return chunks
 
 
@@ -60,27 +89,39 @@ def recursive_split(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP, separato
     Recursively splits `text` using the first separator that actually
     breaks it into pieces small enough to work with, falling back to
     the next separator in the list for any piece still too large.
+
+    Returns a list of (chunk_text, start_offset) tuples, where
+    start_offset is relative to the start of `text` as passed into THIS
+    call. At the top-level call site (a whole page's text), that means
+    start_offset is directly the offset within the page -- no separate
+    re-location step needed.
     """
     if separators is None:
         separators = SEPARATORS
     if not text.strip():
         return []
     if len(text) <= chunk_size:
-        return [text] if text.strip() else []
+        return [(text, 0)] if text.strip() else []
 
     separator, remaining_separators = separators[0], separators[1:]
     pieces = _split_on_separator(text, separator)
+    piece_offsets = _piece_offsets(pieces)  # local to `text`, 0-based
 
     # Any individual piece still too big gets recursively split further
     # with the NEXT separator down the list (paragraph -> line -> sentence -> word -> char).
-    expanded = []
-    for piece in pieces:
+    expanded = []  # list of (piece_text, offset_local_to_text)
+    for piece, offset in zip(pieces, piece_offsets):
         if len(piece) > chunk_size and remaining_separators:
-            expanded.extend(recursive_split(piece, chunk_size, overlap, remaining_separators))
+            sub_chunks = recursive_split(piece, chunk_size, overlap, remaining_separators)
+            # sub_chunks' offsets are local to `piece`; shift so they're
+            # local to `text` instead, by adding piece's own offset in `text`
+            expanded.extend((sub_text, offset + sub_offset) for sub_text, sub_offset in sub_chunks)
         else:
-            expanded.append(piece)
+            expanded.append((piece, offset))
 
-    return _merge_pieces(expanded, chunk_size, overlap)
+    ex_texts = [t for t, _ in expanded]
+    ex_offsets = [o for _, o in expanded]
+    return _merge_pieces(ex_texts, ex_offsets, chunk_size, overlap)
 
 
 def main():
@@ -90,12 +131,13 @@ def main():
     all_chunks = []
     for page in pages:
         chunks = recursive_split(page["text"])
-        for i, chunk_text in enumerate(chunks):
+        for i, (chunk_text, offset) in enumerate(chunks):
             all_chunks.append({
                 "chunk_id": f"{page['source']}_p{page['page_number']}_recursive_{i}",
                 "text": chunk_text,
                 "source": page["source"],
                 "page_number": page["page_number"],
+                "char_offset_in_page": offset,
                 "strategy": "recursive",
             })
 

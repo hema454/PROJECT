@@ -26,6 +26,13 @@ CHUNK_FILES = {
 
 def attach_metadata(chunks, ingested_date):
     for chunk in chunks:
+        # NOTE: `source` and `page` are intentionally duplicated here even
+        # though they already exist at the top level of `chunk`. This is a
+        # deliberate design choice, not an oversight: the `metadata` dict
+        # is the self-contained payload that gets sent downstream (e.g. to
+        # the vector DB alongside the embedding). Consumers that only see
+        # `metadata` -- not the full chunk record -- still need source/page
+        # available without reaching back into the parent object.
         chunk["metadata"] = {
             "source": chunk["source"],
             "page": chunk["page_number"],

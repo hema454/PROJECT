@@ -3,7 +3,9 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "task4"))
+# points at week4/ (the shared embeddings.py), not week4/task4 -- so this
+# no longer breaks silently if task4 gets reorganized or renamed
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from embeddings import embed_text  # noqa: E402
 

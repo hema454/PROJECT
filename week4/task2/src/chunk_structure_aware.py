@@ -33,7 +33,11 @@ def is_heading(line: str) -> bool:
 
 def split_into_sections(text: str):
     """
-    Returns a list of (heading_or_None, section_text) tuples.
+    Returns a list of (heading_or_None, section_text, start_offset) tuples.
+    start_offset is the position of the section's first character within
+    `text` (the page text), tracked exactly while scanning line-by-line
+    rather than recovered afterward via string search.
+
     Text appearing before the first detected heading gets heading=None
     -- this is the "lost their heading" / orphaned-text case.
     """
@@ -41,18 +45,24 @@ def split_into_sections(text: str):
     sections = []
     current_heading = None
     current_lines = []
+    current_start = 0
+    pos = 0  # running character offset into `text`
 
     for line in lines:
         if is_heading(line):
             if current_lines:
-                sections.append((current_heading, "\n".join(current_lines)))
+                sections.append((current_heading, "\n".join(current_lines), current_start))
             current_heading = line.strip()
             current_lines = []
+            current_start = pos + len(line) + 1  # right after this heading line + its "\n"
         else:
+            if not current_lines:
+                current_start = pos  # first line of this section starts here
             current_lines.append(line)
+        pos += len(line) + 1  # +1 for the "\n" consumed by the earlier text.split("\n")
 
     if current_lines:
-        sections.append((current_heading, "\n".join(current_lines)))
+        sections.append((current_heading, "\n".join(current_lines), current_start))
 
     return sections
 
@@ -65,22 +75,25 @@ def main():
     for page in pages:
         sections = split_into_sections(page["text"])
         chunk_idx = 0
-        for heading, section_text in sections:
+        for heading, section_text, section_offset in sections:
             if not section_text.strip():
                 continue
             if len(section_text) <= STRUCTURE_MAX_SECTION_SIZE:
-                pieces = [section_text]
+                pieces = [(section_text, 0)]
             else:
                 # Section too big -- fall back to recursive splitting
                 # WITHIN this section only, per 4.5's "recursive" strategy.
+                # recursive_split() returns offsets local to section_text,
+                # so we add section_offset to get the true page offset.
                 pieces = recursive_split(section_text, chunk_size=STRUCTURE_MAX_SECTION_SIZE)
 
-            for piece in pieces:
+            for piece_text, local_offset in pieces:
                 all_chunks.append({
                     "chunk_id": f"{page['source']}_p{page['page_number']}_struct_{chunk_idx}",
-                    "text": piece,
+                    "text": piece_text,
                     "source": page["source"],
                     "page_number": page["page_number"],
+                    "char_offset_in_page": section_offset + local_offset,
                     "section": heading,  # None if this text had no detected heading above it
                     "strategy": "structure_aware",
                 })
